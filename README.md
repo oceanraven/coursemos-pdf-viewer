@@ -26,7 +26,7 @@ Click a PDF link from your LMS and confirm it opens in a new tab. Switch OFF, th
 
 ## Release downloads
 
-For installation, download `open-edx-pdf-viewer-v1.1.0.zip` from GitHub Releases, extract it, and select the extracted folder using **Load unpacked**. The release ZIP contains only the six extension runtime files; it is not a signed CRX installer.
+For installation, download `open-edx-pdf-viewer-v1.1.2.zip` from GitHub Releases, extract it, and select the extracted folder using **Load unpacked**. The release ZIP contains the extension runtime files and icons; it is not a signed CRX installer.
 
 ## Build packages
 
@@ -38,7 +38,11 @@ python3 scripts/package.py
 
 This creates two packages in `dist/`:
 
-- `open-edx-pdf-viewer-v1.1.0-source.zip`: GitHub-ready source, documentation, and packaging script. Extract it and upload the enclosed folder's contents to your repository.
-- `open-edx-pdf-viewer-v1.1.0.zip`: Extension runtime files with `manifest.json` at the ZIP root. Attach this file to the GitHub Release tagged `v1.1.0`; use `RELEASE_NOTES.md` for the release description.
+- `open-edx-pdf-viewer-v1.1.2-source.zip`: GitHub-ready source, documentation, and packaging script. Extract it and upload the enclosed folder's contents to your repository.
+- `open-edx-pdf-viewer-v1.1.2.zip`: Extension runtime files with `manifest.json` at the ZIP root. Attach this file to the GitHub Release tagged `v1.1.2`; use `RELEASE_NOTES.md` for the release description.
 
 Local tool settings, browser metadata, and generated packages are excluded from the source archive.
+
+## Icon assets
+
+The geometric icon source is `icons/icon.svg`. PNG variants are included. To regenerate them, install Pillow and run `python3 scripts/build_icons.py`.

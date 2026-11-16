@@ -1,15 +1,39 @@
 {
   "manifest_version": 3,
   "name": "Open edX PDF Viewer",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "minimum_chrome_version": "128",
   "description": "Open PDFs from Open edX and POSTECH LMS in a new browser tab. Toggle on or off anytime.",
-  "permissions": ["declarativeNetRequestWithHostAccess", "storage", "activeTab", "scripting"],
-  "host_permissions": ["https://plms.postech.ac.kr/*"],
-  "optional_host_permissions": ["https://*/*", "http://*/*"],
-  "background": { "service_worker": "background.js" },
+  "permissions": [
+    "declarativeNetRequestWithHostAccess",
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://plms.postech.ac.kr/*"
+  ],
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "action": {
     "default_title": "Open edX PDF Viewer",
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
   }
 }

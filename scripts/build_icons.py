@@ -7,13 +7,26 @@ ROOT = Path(__file__).resolve().parent.parent
 SCALE = 8
 image = Image.new('RGBA', (128 * SCALE, 128 * SCALE), (0, 0, 0, 0))
 draw = ImageDraw.Draw(image)
-def polygon(points, color):
-    draw.polygon([(x * SCALE, y * SCALE) for x, y in points], fill=color)
-polygon([(16,16),(112,16),(112,112),(16,112)], '#20201e')
-polygon([(36,32),(66,32),(80,46),(80,96),(36,96)], '#f7f7f2')
-for y in (65,77):
-    draw.line([(48*SCALE,y*SCALE),(66*SCALE,y*SCALE)], fill='#20201e', width=5*SCALE)
-polygon([(67,28),(100,28),(100,61),(88,61),(88,49),(71,66),(62,57),(79,40),(67,40)], '#dfff70')
+INK = '#20201e'
+
+def box(bounds, fill):
+    draw.rectangle(tuple(n * SCALE for n in bounds), fill=fill)
+
+def line(points):
+    draw.line([(x * SCALE, y * SCALE) for x, y in points], fill=INK, width=6*SCALE)
+
+# Six-pixel, square-edged outlines match the popup's flat visual language.
+box((20,16,88,112), INK)
+box((26,22,82,106), '#f7f7f2')
+line([(37,74),(69,74)])
+line([(37,89),(59,89)])
+box((56,16,112,72), INK)
+box((62,22,106,66), '#dfff70')
+# Square arrow ends and joins, without a rounded badge or dark backdrop.
+line([(73,55),(95,33)])
+line([(77,33),(95,33),(95,51)])
+box((74,30,98,36), INK)
+box((92,30,98,54), INK)
 for size in (16,32,48,128):
     image.resize((size,size), Image.Resampling.LANCZOS).save(ROOT / 'icons' / f'icon{size}.png')
 print('Generated 16, 32, 48, and 128 px PNG icons.')
