@@ -1,14 +1,15 @@
-# v1.1.2
+# v1.1.3
 
-- Redesign the icon to match the popup: warm off-white, charcoal outlines, and a lime new-tab accent.
-- Replace the dark background tile with a transparent, square-edged document symbol.
-- Include refreshed 16, 32, 48, and 128 px icons and editable SVG source.
+- Open recognized PDF links through the extension's tabs API instead of only changing the link target.
+- Prevent LMS click handlers from replacing PDF clicks with same-tab navigation.
+- Recognize PDF filenames in link text and PDF labels or image indicators.
+- Verify the source site's permission and ON/OFF state before opening a tab.
 
 ## Install
 
 Requires Chrome 128 or later.
 
-1. Download `open-edx-pdf-viewer-v1.1.2.zip` and extract it.
+1. Download `open-edx-pdf-viewer-v1.1.3.zip` and extract it.
 2. Open `chrome://extensions` and enable **Developer mode**.
 3. Click **Load unpacked** and select the extracted folder containing `manifest.json`. Reload an existing installation after replacing its files.
 4. Open your Open edX LMS tab, click the extension, and select **Add current LMS site**.

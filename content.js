@@ -22,7 +22,11 @@
     try { path = decodeURIComponent(path); } catch { /* Keep malformed paths unchanged. */ }
     return pdf(path) || pdf(link.getAttribute('download')) ||
       link.type?.split(';')[0].trim().toLowerCase() === 'application/pdf' ||
-      ['filename', 'file', 'name', 'download'].some(key => pdf(url.searchParams.get(key)));
+      ['filename', 'file', 'name', 'download'].some(key => pdf(url.searchParams.get(key))) ||
+      /\.pdf(?:\s|$|[)\]])/i.test(link.textContent || '') ||
+      /\bpdf\b/i.test([link.getAttribute('aria-label'), link.title,
+        ...Array.from(link.querySelectorAll('img'), image => `${image.alt} ${image.getAttribute('src')}`)
+      ].filter(Boolean).join(' '));
   }
 
   document.addEventListener('click', event => {
@@ -31,16 +35,11 @@
         !sites.includes(`${location.origin}/*`)) return;
     const link = event.composedPath().find(node => node instanceof HTMLAnchorElement);
     if (!link?.href || !isPdf(link)) return;
-    // Let Chrome perform the navigation, preserving referrers and keyboard activation.
-    const saved = ['target', 'rel', 'download'].map(name => [name, link.getAttribute(name)]);
-    link.target = '_blank';
-    link.relList.add('noopener');
-    link.removeAttribute('download');
-    setTimeout(() => {
-      for (const [name, value] of saved) {
-        if (value === null) link.removeAttribute(name);
-        else link.setAttribute(name, value);
-      }
-    }, 0);
+    // Stop LMS click handlers from replacing this navigation with a same-tab redirect.
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    chrome.runtime.sendMessage({ type: 'openPdf', url: link.href }).then(result => {
+      if (!result?.opened) location.assign(link.href);
+    }).catch(() => location.assign(link.href));
   }, true);
 })();

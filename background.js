@@ -52,8 +52,26 @@ chrome.runtime.onInstalled.addListener(() => { void sync(); });
 chrome.runtime.onStartup.addListener(() => { void sync(); });
 chrome.permissions.onAdded.addListener(() => { void sync(); });
 chrome.permissions.onRemoved.addListener(() => { void sync(); });
+async function openPdf(message, sender) {
+  if (!sender.tab || !sender.url) return { opened: false };
+  const source = new URL(sender.url);
+  const target = new URL(message.url);
+  if (!['http:', 'https:'].includes(source.protocol) ||
+      !['http:', 'https:'].includes(target.protocol)) return { opened: false };
+  const { enabled = true } = await chrome.storage.local.get('enabled');
+  const allowed = await chrome.permissions.contains({ origins: [`${source.origin}/*`] });
+  if (!enabled || !allowed) return { opened: false };
+  await chrome.tabs.create({ url: target.href, active: true, openerTabId: sender.tab.id });
+  return { opened: true };
+}
+
 chrome.runtime.onMessage.addListener((message, sender, respond) => {
-  if (sender.id !== chrome.runtime.id || message.type !== 'sync') return;
+  if (sender.id !== chrome.runtime.id) return;
+  if (message.type === 'openPdf') {
+    openPdf(message, sender).then(respond).catch(error => respond({ opened: false, error: error.message }));
+    return true;
+  }
+  if (message.type !== 'sync') return;
   sync().then(state => respond({ ...state, defaultSite: DEFAULT_SITE }))
     .catch(error => respond({ error: error.message }));
   return true;
