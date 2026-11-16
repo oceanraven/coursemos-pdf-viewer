@@ -9,7 +9,8 @@ manifest = json.loads((ROOT / 'manifest.json').read_text())
 version = manifest['version']
 name = f'open-edx-pdf-viewer-v{version}'
 runtime = ['manifest.json', 'background.js', 'content.js', 'popup.html', 'popup.css', 'popup.js']
-source = runtime + ['README.md', 'RELEASE_NOTES.md', '.gitignore', 'scripts/package.py']
+runtime += sorted(set(manifest.get('icons', {}).values()) | set(manifest['action'].get('default_icon', {}).values()))
+source = runtime + ['README.md', 'RELEASE_NOTES.md', 'PRIVACY.md', 'STORE_LISTING.md', '.gitignore', 'scripts/package.py', 'scripts/build_icons.py', 'icons/icon.svg']
 assert f'v{version}' in (ROOT / 'popup.html').read_text(), 'Popup version does not match manifest'
 assert f'# v{version}' in (ROOT / 'RELEASE_NOTES.md').read_text(), 'Release notes version does not match manifest'
 for filename in source:
