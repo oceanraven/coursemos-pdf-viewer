@@ -26,7 +26,7 @@ Click a PDF link from your LMS and confirm it opens in a new tab. Switch OFF, th
 
 ## Release downloads
 
-For installation, download `open-edx-pdf-viewer-v1.1.3.zip` from GitHub Releases, extract it, and select the extracted folder using **Load unpacked**. The release ZIP contains the extension runtime files and icons; it is not a signed CRX installer.
+For installation, download `open-edx-pdf-viewer-v1.1.4.zip` from GitHub Releases, extract it, and select the extracted folder using **Load unpacked**. The release ZIP contains the extension runtime files and icons; it is not a signed CRX installer.
 
 ## Build packages
 
@@ -38,8 +38,8 @@ python3 scripts/package.py
 
 This creates two packages in `dist/`:
 
-- `open-edx-pdf-viewer-v1.1.3-source.zip`: GitHub-ready source, documentation, and packaging script. Extract it and upload the enclosed folder's contents to your repository.
-- `open-edx-pdf-viewer-v1.1.3.zip`: Extension runtime files with `manifest.json` at the ZIP root. Attach this file to the GitHub Release tagged `v1.1.3`; use `RELEASE_NOTES.md` for the release description.
+- `open-edx-pdf-viewer-v1.1.4-source.zip`: GitHub-ready source, documentation, and packaging script. Extract it and upload the enclosed folder's contents to your repository.
+- `open-edx-pdf-viewer-v1.1.4.zip`: Extension runtime files with `manifest.json` at the ZIP root. Attach this file to the GitHub Release tagged `v1.1.4`; use `RELEASE_NOTES.md` for the release description.
 
 Local tool settings, browser metadata, and generated packages are excluded from the source archive.
 

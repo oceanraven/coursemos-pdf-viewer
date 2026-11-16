@@ -26,6 +26,5 @@ li span { overflow-wrap: anywhere; }
 .add { width: 100%; margin-top: 8px; padding: 12px; border: 1px solid #b9b9af; background: transparent; font-size: 12px; text-align: left; }
 .add:hover, .remove:hover { background: #eaeae1; }
 .hint { color: #72726a; font-size: 10px; line-height: 1.7; margin: 10px 0 0; }
-#message { font-size: 11px; line-height: 1.6; margin: 12px 0 0; color: #55554d; }
-#message:empty { display: none; }
+#message { min-height: 35.2px; font-size: 11px; line-height: 1.6; margin: 12px 0 0; color: #55554d; overflow-wrap: anywhere; }
 footer { border-top: 1px solid #d8d8ce; padding: 13px 22px; color: #72726a; font: 9px monospace; letter-spacing: .6px; }

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Open edX PDF Viewer",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "minimum_chrome_version": "128",
   "description": "Open PDFs from Open edX and POSTECH LMS in a new browser tab. Toggle on or off anytime.",
   "permissions": [

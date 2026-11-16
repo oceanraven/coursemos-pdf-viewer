@@ -3,6 +3,7 @@ const add = document.querySelector('#add');
 const message = document.querySelector('#message');
 let enabled = true;
 let currentSite;
+let renderedSites;
 
 async function refresh() {
   const state = await chrome.runtime.sendMessage({ type: 'sync' });
@@ -12,32 +13,36 @@ async function refresh() {
   toggle.textContent = enabled ? 'ON' : 'OFF';
   document.querySelector('#state').textContent = enabled ? 'PDF links open in a new tab' : 'Using default link behavior';
   document.querySelector('#count').textContent = String(state.sites.length).padStart(2, '0');
-  const list = document.querySelector('#sites');
-  list.replaceChildren();
-  for (const site of state.sites) {
-    const row = document.createElement('li');
-    const name = document.createElement('span');
-    name.textContent = new URL(site).host;
-    row.append(name);
-    if (site !== state.defaultSite) {
-      const remove = document.createElement('button');
-      remove.className = 'remove';
-      remove.textContent = 'Remove';
-      remove.setAttribute('aria-label', `Remove ${name.textContent}`);
-      remove.addEventListener('click', () => run(async () => {
-        await chrome.permissions.remove({ origins: [site] });
-        await refresh();
-      }));
-      row.append(remove);
+  const sitesKey = JSON.stringify([state.sites, state.defaultSite]);
+  if (sitesKey !== renderedSites) {
+    const list = document.querySelector('#sites');
+    const rows = document.createDocumentFragment();
+    for (const site of state.sites) {
+      const row = document.createElement('li');
+      const name = document.createElement('span');
+      name.textContent = new URL(site).host;
+      row.append(name);
+      if (site !== state.defaultSite) {
+        const remove = document.createElement('button');
+        remove.className = 'remove';
+        remove.textContent = 'Remove';
+        remove.setAttribute('aria-label', `Remove ${name.textContent}`);
+        remove.addEventListener('click', () => run(async () => {
+          await chrome.permissions.remove({ origins: [site] });
+          await refresh();
+        }));
+        row.append(remove);
+      }
+      rows.append(row);
     }
-    list.append(row);
+    list.replaceChildren(rows);
+    renderedSites = sitesKey;
   }
   add.disabled = !currentSite || state.sites.includes(currentSite);
   add.textContent = !currentSite ? 'Open an HTTP(S) LMS tab' : state.sites.includes(currentSite) ? 'Current site already added' : '+ Add current LMS site';
   toggle.disabled = false;
 }
 async function run(action) {
-  message.textContent = '';
   try { await action(); }
   catch (error) { message.textContent = `Could not apply settings: ${error.message}`; }
 }
