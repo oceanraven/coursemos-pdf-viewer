@@ -7,7 +7,7 @@ from zipfile import ZIP_DEFLATED, ZipFile
 ROOT = Path(__file__).resolve().parent.parent
 manifest = json.loads((ROOT / 'manifest.json').read_text())
 version = manifest['version']
-name = f'open-edx-pdf-viewer-v{version}'
+name = f'coursemos-pdf-viewer-v{version}'
 runtime = ['manifest.json', 'background.js', 'content.js', 'popup.html', 'popup.css', 'popup.js']
 runtime += sorted(set(manifest.get('icons', {}).values()) | set(manifest['action'].get('default_icon', {}).values()))
 source = runtime + ['README.md', 'RELEASE_NOTES.md', 'PRIVACY.md', 'STORE_LISTING.md', '.gitignore', 'scripts/package.py', 'scripts/build_icons.py', 'icons/icon.svg']

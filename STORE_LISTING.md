@@ -2,20 +2,20 @@
 
 ## Name
 
-Open edX PDF Viewer
+CourseMOS PDF Viewer
 
 ## Summary
 
-Open PDFs from Open edX and POSTECH LMS in a new browser tab. Toggle on or off anytime.
+Open PDFs from CourseMOS-based LMS sites, including POSTECH LMS in a new browser tab. Toggle on or off anytime.
 
 ## Detailed description
 
 Keep your course page open while reading PDFs.
 
-Open edX PDF Viewer opens identifiable PDF links in a new tab and asks Chrome to display PDF responses in its built-in viewer instead of downloading them.
+CourseMOS PDF Viewer opens identifiable PDF links in a new tab and asks Chrome to display PDF responses in its built-in viewer instead of downloading them.
 
 Features:
-- Add your institution's Open edX site from the extension popup.
+- Add your institution's CourseMOS site from the extension popup.
 - POSTECH LMS support included by default.
 - Turn the feature ON or OFF anytime.
 - Preferences persist across browser restarts.
@@ -23,13 +23,13 @@ Features:
 - Local processing with no analytics or tracking.
 
 Getting started:
-1. Open your Open edX LMS site.
+1. Open your CourseMOS LMS site.
 2. Open the extension and click “Add current LMS site”.
 3. Allow access to that site, then click a PDF link.
 
 Requires Chrome 128 or later. Chrome must be configured to open PDFs in the browser. PDF links without a recognizable URL or filename, JavaScript-driven downloads, and PDFs served with a non-PDF content type may retain their original behavior. Files on a separate server require permission for that server too.
 
-An independent project, not affiliated with or endorsed by Open edX or POSTECH.
+An independent project, not affiliated with or endorsed by CourseMOS or POSTECH.
 
 ## Single purpose
 
@@ -42,7 +42,7 @@ Open PDFs from user-authorized LMS sites in new browser tabs using Chrome's buil
 - activeTab: Reads the current tab URL when the user opens the popup so they can add their LMS site.
 - scripting: Registers and injects a bundled content script on authorized sites to identify PDF link clicks and open them in a new tab.
 - https://plms.postech.ac.kr/*: Provides built-in support for POSTECH LMS.
-- Optional HTTP/HTTPS host permissions: Open edX installations use institution-specific domains. Access is requested only for the specific site the user adds. This also supports local HTTP installations.
+- Optional HTTP/HTTPS host permissions: CourseMOS installations use institution-specific domains. Access is requested only for the specific site the user adds. This also supports local HTTP installations.
 
 ## Data disclosures
 

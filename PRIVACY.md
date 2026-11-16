@@ -1,6 +1,6 @@
 # Privacy Policy
 
-Open edX PDF Viewer processes data locally in your browser to open PDF links in new tabs and display PDF responses inline.
+CourseMOS PDF Viewer processes data locally in your browser to open PDF links in new tabs and display PDF responses inline.
 
 ## Data handled locally
 

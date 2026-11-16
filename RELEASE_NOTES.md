@@ -1,5 +1,7 @@
 # v1.1.4
 
+- Rename the extension to CourseMOS PDF Viewer and correct LMS platform descriptions.
+
 - Reserve space for popup status messages to prevent the footer from jumping when buttons are clicked.
 - Keep the previous message visible while applying settings.
 - Rebuild the site list only when its contents change.
@@ -9,10 +11,10 @@
 
 Requires Chrome 128 or later.
 
-1. Download `open-edx-pdf-viewer-v1.1.4.zip` and extract it.
+1. Download `coursemos-pdf-viewer-v1.1.4.zip` and extract it.
 2. Open `chrome://extensions` and enable **Developer mode**.
 3. Click **Load unpacked** and select the extracted folder containing `manifest.json`. Reload an existing installation after replacing its files.
-4. Open your Open edX LMS tab, click the extension, and select **Add current LMS site**.
+4. Open your CourseMOS LMS tab, click the extension, and select **Add current LMS site**.
 
 POSTECH LMS is included by default. Changes apply to the next PDF you open.
 
@@ -24,4 +26,4 @@ The runtime ZIP includes the extension icons. See `STORE_LISTING.md` in the sour
 
 ## Validation
 
-Version consistency and ZIP contents were verified during packaging. Live Open edX behavior has not been verified in this environment.
+Version consistency and ZIP contents were verified during packaging. Live CourseMOS LMS behavior has not been verified in this environment.
