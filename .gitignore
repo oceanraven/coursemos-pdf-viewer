@@ -1,0 +1,14 @@
+# Generated packages
+dist/
+
+# Local tools and browser metadata
+.agents/
+.aws/
+.codex/
+_metadata/
+
+# Operating system and Python files
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc

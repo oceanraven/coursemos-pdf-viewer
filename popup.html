@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open edX PDF Viewer</title>
+  <link rel="stylesheet" href="popup.css">
+  <script src="popup.js" defer></script>
+</head>
+<body>
+  <header><span class="eyebrow">PDF / VIEWER</span><span class="edition">OPEN edX</span></header>
+  <main>
+    <h1>Less downloading.<br>More reading.</h1>
+    <p class="intro">Open LMS PDFs in a new browser tab.</p>
+    <section class="control" aria-label="PDF viewer settings">
+      <div><span class="label">Open PDFs in a new tab</span><p id="state">Loading settings…</p></div>
+      <button id="toggle" type="button" role="switch" aria-checked="false" aria-label="Open PDFs in a new tab" disabled>OFF</button>
+    </section>
+    <section class="sites" aria-labelledby="sites-title">
+      <h2 id="sites-title">Enabled sites <span id="count">00</span></h2>
+      <ul id="sites"></ul>
+      <button id="add" class="add" type="button" disabled>+ Add current LMS site</button>
+      <p class="hint">Add your Open edX site from its tab. Only listed sites are affected.</p>
+    </section>
+    <p id="message" role="status" aria-live="polite"></p>
+  </main>
+  <footer><span>OPEN edX + POSTECH LMS</span><span>v1.1.0</span></footer>
+</body>
+</html>
