@@ -1,6 +1,7 @@
 # CourseMOS PDF Viewer
 
-Open PDFs from CourseMOS-based LMS sites, including POSTECH LMS in Chrome's PDF viewer in a new tab. Requires Chrome 128 or later.
+Open PDFs from CourseMOS-based LMS sites, including POSTECH LMS in Chrome's PDF viewer in a new tab. Requires Chrome 128 or later. Available on the [Chrome Web Store](https://chromewebstore.google.com/detail/coursemos-pdf-viewer/aokklhflhnonadhnkkhhcbomlmfpcbok)!
+
 
 ## Setup and usage
 
